@@ -4,10 +4,12 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
+using System.Threading;
 using Reloaded;
 using Reloaded.Assembler;
 using Reloaded.Process;
 using Reloaded.Process.Memory;
+using Reloaded_Mod_Template.Shadow;
 
 namespace Reloaded_Mod_Template
 {
@@ -91,6 +93,7 @@ namespace Reloaded_Mod_Template
         */
         #endregion Mod Loader Template Description
 
+        #region Reloaded Mod Template
         /*
             Default Variables:
             These variables are automatically assigned by the mod template, you do not
@@ -114,19 +117,24 @@ namespace Reloaded_Mod_Template
         /// is contained in.
         /// </summary>
         public static string ModDirectory;
-        
-        /// <summary>
-        /// Your own user code starts here.
-        /// If this is your first time, do consider reading the notice above.
-        /// It contains some very useful information.
-        /// </summary>
+        #endregion Reloaded Mod Template
+
+        // Updates the current Discord status.
+        private static Thread _updateDiscordThread;
+
+        // Lets us work with Shadow the Hedgehog.
+        private static Shadow.Shadow _shadowUtility;
+        private static Discord _discord;
+
         public static unsafe void Init()
         {
             #if DEBUG
             Debugger.Launch();
             #endif
 
-            Bindings.PrintInfo("Hello World!");
+            // Start thread to update current level.
+            _shadowUtility = new Shadow.Shadow(new Dolphin(GameProcess));
+            _discord = new Discord(_shadowUtility, Settings.GetSettings());
         }
     }
 }

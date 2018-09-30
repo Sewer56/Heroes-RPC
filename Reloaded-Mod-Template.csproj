@@ -20,20 +20,22 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\build\Debug\Default-Mods\Reloaded-Mod-Template\</OutputPath>
+    <OutputPath>C:\Users\sewer\AppData\Roaming\Reloaded-Mod-Loader\Reloaded-Mods\Shadow-The-Hedgehog-GC\RichPresence\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\build\Release\Default-Mods\Reloaded-Mod-Template\</OutputPath>
+    <OutputPath>C:\Users\sewer\AppData\Roaming\Reloaded-Mod-Loader\Reloaded-Mods\Shadow-The-Hedgehog-GC\RichPresence\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>2</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -89,15 +91,33 @@
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.11.0.1\lib\net35\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Discord.cs" />
+    <Compile Include="Dolphin.cs" />
+    <Compile Include="EndianConverter.cs" />
+    <Compile Include="Native\PSAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ReloadedTemplate\Client.cs" />
     <Compile Include="ReloadedTemplate\Initializer.cs" />
     <Compile Include="ReloadedTemplate\LocalAssemblyFinder.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="Shadow\Definitions\CurrentMission.cs" />
+    <Compile Include="Shadow\Definitions\Fun\EdgyMissions.cs" />
+    <Compile Include="Shadow\Definitions\MenuState.cs" />
+    <Compile Include="Shadow\Definitions\Modes.cs" />
+    <Compile Include="Shadow\Shadow.cs" />
+    <Compile Include="Shadow\Definitions\StageID.cs" />
+    <Compile Include="Shadow\Utilities\ModeTranslationDictionary.cs" />
+    <Compile Include="Shadow\Utilities\MenuTranslationDictionary.cs" />
+    <Compile Include="Shadow\Utilities\ImageTranslationDictionary.cs" />
+    <Compile Include="Shadow\Utilities\StageTranslationDictionary.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config.json">
@@ -114,11 +134,20 @@
     <PackageReference Include="LiteNetLib-custom">
       <Version>0.0.1</Version>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>11.0.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Banner.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="discord-rpc-csharp\Discord RPC\DiscordRPC.csproj">
+      <Project>{819D20D6-8D88-45C1-A4D2-AA21F10ABD19}</Project>
+      <Name>DiscordRPC</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
