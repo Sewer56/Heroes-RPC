@@ -9,7 +9,6 @@ using Reloaded;
 using Reloaded.Assembler;
 using Reloaded.Process;
 using Reloaded.Process.Memory;
-using Reloaded_Mod_Template.Shadow;
 
 namespace Reloaded_Mod_Template
 {
@@ -123,7 +122,7 @@ namespace Reloaded_Mod_Template
         private static Thread _updateDiscordThread;
 
         // Lets us work with Shadow the Hedgehog.
-        private static Shadow.Shadow _shadowUtility;
+        private static Heroes.Heroes _heroesUtility;
         private static Discord _discord;
 
         public static unsafe void Init()
@@ -133,8 +132,8 @@ namespace Reloaded_Mod_Template
             #endif
 
             // Start thread to update current level.
-            _shadowUtility = new Shadow.Shadow(new Dolphin(GameProcess));
-            _discord = new Discord(_shadowUtility, Settings.GetSettings());
+            _heroesUtility = new Heroes.Heroes();
+            _discord = new Discord(_heroesUtility);
         }
     }
 }
