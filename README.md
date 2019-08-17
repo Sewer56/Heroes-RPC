@@ -7,6 +7,12 @@
 	<p>C# based universal mod loader framework compatible with arbitrary processes.</p>
 </div>
 
+# Deprecation Notice
+This project has been deprecated. 
+
+It has been ported to the newer, [Reloaded-II](https://github.com/Reloaded-Project/Reloaded-II) mod loader.
+
+The new project can be found here: [SonicHeroes.Utils.DiscordRPC.ReloadedII](https://github.com/Sewer56/SonicHeroes.Utils.DiscordRPC.ReloadedII).
 
 # About This Project
 
